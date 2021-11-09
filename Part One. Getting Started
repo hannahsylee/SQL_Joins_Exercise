@@ -1,0 +1,1379 @@
+Last login: Sat Nov  6 14:38:31 on ttys000
+hannahsylee@Hannahs-MacBook-Pro ~ % cd Desktop
+hannahsylee@Hannahs-MacBook-Pro Desktop % cd 'Springboard Software Engineering Course/'
+hannahsylee@Hannahs-MacBook-Pro Springboard Software Engineering Course % ls
+01_Web Fundamentals Refresher	22_SQL
+06_Developer_Fundamentals	Assessments
+07_Jasmine			Connect Four
+08_Advanced_Array_Methods	Terminal
+10_ES2015			Twitter_Bootstrap
+12_Object-Oriented		first
+13_jQuery			js-dom-events-demo
+14_Web_Works			js-dom-intro-selecting-demo
+16_Section_I_Cumulative_Project	js-dom-modifying-demo
+18_Python			localstorage-demo
+19_Flask			memory-game
+hannahsylee@Hannahs-MacBook-Pro Springboard Software Engineering Course % cd 22_SQL
+hannahsylee@Hannahs-MacBook-Pro 22_SQL % ls
+sql-joins-demo	sql-query-demo	sql-querying
+hannahsylee@Hannahs-MacBook-Pro 22_SQL % cd sql-querying
+hannahsylee@Hannahs-MacBook-Pro sql-querying % ls
+queries_playstore.sql	seed_playstore.sql
+queries_products.sql	seed_products.sql
+hannahsylee@Hannahs-MacBook-Pro sql-querying % 
+  [Restored Nov 7, 2021 at 1:00:35 PM]
+Last login: Sun Nov  7 13:00:31 on console
+Restored session: Sun Nov  7 00:12:00 PDT 2021
+hannahsylee@Hannahs-MacBook-Pro sql-querying % psql < seed_products.sql
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "products_db" as user "hannahsylee".
+CREATE TABLE
+hannahsylee@Hannahs-MacBook-Pro sql-querying % psql products_db
+psql (14.0)
+Type "help" for help.
+
+products_db=# SELECT * FROM products
+products_db-# \d
+                 List of relations
+ Schema |      Name       |   Type   |    Owner    
+--------+-----------------+----------+-------------
+ public | products        | table    | hannahsylee
+ public | products_id_seq | sequence | hannahsylee
+(2 rows)
+
+products_db-# SELECT * FROM products
+products_db-# quit;
+Use \q to quit.
+ERROR:  syntax error at or near "SELECT"
+LINE 2: SELECT * FROM products
+        ^
+products_db=# quit;
+hannahsylee@Hannahs-MacBook-Pro sql-querying % psql < seed_playstore.sql
+NOTICE:  database "playstore" does not exist, skipping
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "playstore" as user "hannahsylee".
+CREATE TABLE
+INSERT 0 9637
+hannahsylee@Hannahs-MacBook-Pro sql-querying % psql playstore
+psql (14.0)
+Type "help" for help.
+
+playstore=# SELECT * FROM playstore;
+ERROR:  relation "playstore" does not exist
+LINE 1: SELECT * FROM playstore;
+                      ^
+playstore=# \d
+                 List of relations
+ Schema |       Name       |   Type   |    Owner    
+--------+------------------+----------+-------------
+ public | analytics        | table    | hannahsylee
+ public | analytics_id_seq | sequence | hannahsylee
+(2 rows)
+
+playstore=# SELECT * FROM analytics;
+  id  |                                                                                              app_name                                                                                              |      category       | rating | reviews  |        size        | min_installs | price  | content_rating  |                   genres                    | last_updated |                  current_version                   |  android_version   
+------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------+----------+--------------------+--------------+--------+-----------------+---------------------------------------------+--------------+----------------------------------------------------+--------------------
+    1 | Facebook                                                                                                                                                                                           | SOCIAL              |    4.1 | 78158306 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device                                 | Varies with device
+    2 | WhatsApp Messenger                                                                                                                                                                                 | SOCIAL              |    4.1 | 78128208 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device           :...skipping...
+  id  |                                                                                              app_name                                                                                              |      category       | rating | reviews  |        size        | min_installs | price  | content_rating  |                   genres                    | last_updated |                  current_version                   |  android_version   
+------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------+----------+--------------------+--------------+--------+-----------------+---------------------------------------------+--------------+----------------------------------------------------+--------------------
+    1 | Facebook                                                                                                                                                                                           | SOCIAL              |    4.1 | 78158306 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device                                 | Varies with device
+    2 | WhatsApp Messenger                                                                                                                                                                                 | SOCIAL              |    4.1 | 78128208 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device                                 | Varies with device
+    3 | Instagram                                                               :...skipping...
+  id  |                                                                                              app_name                                                                                              |      category       | rating | reviews  |        size        | min_installs | price  | content_rating  |                   genres                    | last_updated |                  current_version                   |  android_version   
+------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------+----------+--------------------+--------------+--------+-----------------+---------------------------------------------+--------------+----------------------------------------------------+--------------------
+    1 | Facebook                                                                                                                                                                                           | SOCIAL              |    4.1 | 78158306 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device                                 | Varies with device
+    2 | WhatsApp Messenger                                                                                                                                                                                 | SOCIAL              |    4.1 | 78128208 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-08-03   | Varies with device                                 | Varies with device
+    3 | Instagram                                                                                                                                                                                          | COMMUNICATION       |    4.4 | 69119316 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-03   | Varies with device                                 | Varies with device
+    4 | Messenger – Text and Video Chat for Free                                                                                                                                                           | COMMUNICATION       |    4.4 | 69119316 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-03   | Varies with device                                 | Varies with device
+    5 | Clash of Clans                                                                                                                                                                                     | COMMUNICATION       |    4.4 | 69109672 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-03   | Varies with device                                 | Varies with device
+    6 | Clean Master- Space Cleaner & Antivirus                                                                                                                                                            | SOCIAL              |    4.5 | 66577446 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-07-31   | Varies with device                                 | Varies with device
+    7 | Subway Surfers                                                                                                                                                                                     | SOCIAL              |    4.5 | 66577313 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-07-31   | Varies with device                                 | Varies with device
+    8 | YouTube                                                                                                                                                                                            | SOCIAL              |    4.5 | 66577313 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-07-31   | Varies with device                                 | Varies with device
+    9 | Security Master - Antivirus, VPN, AppLock, Booster                                                                                                                                                 | SOCIAL              |    4.5 | 66509917 | Varies with device |   1000000000 |      0 | Teen            | {Social}                                    | 2018-07-31   | Varies with device                                 | Varies with device
+   10 | Clash Royale                                                                                                                                                                                       | COMMUNICATION       |      4 | 56646578 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-01   | Varies with device                                 | Varies with device
+   11 | Candy Crush Saga                                                                                                                                                                                   | COMMUNICATION       |      4 | 56642847 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-01   | Varies with device                                 | Varies with device
+   12 | UC Browser - Fast Download Private & Secure                                                                                                                                                        | COMMUNICATION       |      4 | 56642847 | Varies with device |   1000000000 |      0 | Everyone        | {Communication}                             | 2018-08-01   | Varies with device                                 | Varies with device
+   13 | Snapchat                                                                                                                                                                                           | GAME                |    4.6 | 44893888 | 98M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-07-15   | 10.322.16                                          | 4.1 and up
+   14 | 360 Security - Free Antivirus, Booster, Cleaner                                                                                                                                                    | GAME                |    4.6 | 44891723 | 98M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-07-15   | 10.322.16                                          | 4.1 and up
+   15 | My Talking Tom                                                                                                                                                                                     | GAME                |    4.6 | 44891723 | 98M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-07-15   | 10.322.16                                          | 4.1 and up
+   16 | 8 Ball Pool                                                                                                                                                                                        | FAMILY              |    4.6 | 44881447 | 98M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-07-15   | 10.322.16                                          | 4.1 and up
+   17 | DU Battery Saver - Battery Charger & Battery Life                                                                                                                                                  | TOOLS               |    4.7 | 42916526 | Varies with device |    500000000 |      0 | Everyone        | {Tools}                                     | 2018-08-03   | Varies with device                                 | Varies with device
+   18 | BBM - Free Calls & Messages                                                                                                                                                                        | GAME                |    4.5 | 27725352 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   19 | Cache Cleaner-DU Speed Booster (booster & cleaner)                                                                                                                                                 | GAME                |    4.5 | 27725352 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   20 | Twitter                                                                                                                                                                                            | GAME                |    4.5 | 27724094 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   21 | Viber Messenger                                                                                                                                                                                    | GAME                |    4.5 | 27723193 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   22 | Shadow Fight 2                                                                                                                                                                                     | GAME                |    4.5 | 27722264 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   23 | Google Photos                                                                                                                                                                                      | GAME                |    4.5 | 27711703 | 76M                |   1000000000 |      0 | Everyone 10+    | {Arcade}                                    | 2018-07-12   | 1.90.0                                             | 4.1 and up
+   24 | LINE: Free Calls & Messages                                                                                                                                                                        | VIDEO_PLAYERS       |    4.3 | 25655305 | Varies with device |   1000000000 |      0 | Teen            | {"Video Players & Editors"}                 | 2018-08-02   | Varies with device                                 | Varies with device
+   25 | Pou                                                                                                                                                                                                | VIDEO_PLAYERS       |    4.3 | 25623548 | Varies with device |   1000000000 |      0 | Teen            | {"Video Players & Editors"}                 | 2018-08-02   | Varies with device                                 | Varies with device
+   26 | Skype - free IM & video calls                                                                                                                                                                      | TOOLS               |    4.7 | 24900999 | Varies with device |    500000000 |      0 | Everyone        | {Tools}                                     | 2018-08-04   | 4.6.6                                              | Varies with device
+   27 | Pokémon GO                                                                                                                                                                                         | GAME                |    4.6 | 23136735 | 97M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-06-27   | 2.3.2                                              | 4.1 and up
+   28 | Minion Rush: Despicable Me Official Game                                                                                                                                                           | GAME                |    4.6 | 23134775 | 97M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-06-27   | 2.3.2                                              | 4.1 and up
+   29 | Yes day                                                                                                                                                                                            | GAME                |    4.6 | 23133508 | 97M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-06-27   | 2.3.2                                              | 4.1 and up
+   30 | Hay Day                                                                                                                                                                                            | FAMILY              |    4.6 | 23125280 | 97M                |    100000000 |      0 | Everyone 10+    | {Strategy}                                  | 2018-06-27   | 2.3.2                                              | 4.1 and up
+playstore=# q
+playstore-# q;
+ERROR:  syntax error at or near "q"
+LINE 1: q
+        ^
+playstore=# SELECT * FROM analytics WHERE id = 1880;
+  id  |        app_name         |   category   | rating | reviews |        size        | min_installs | price | content_rating |     genres     | last_updated | current_version |  android_version   
+------+-------------------------+--------------+--------+---------+--------------------+--------------+-------+----------------+----------------+--------------+-----------------+--------------------
+ 1880 | Web Browser for Android | PRODUCTIVITY |    4.3 |  144879 | Varies with device |     10000000 |     0 | Everyone       | {Productivity} | 2016-01-24   | 3.5.0           | Varies with device
+(1 row)
+
+playstore=# SELECT id, name FROM analytics WHERE last_updated = 2018-08-01;
+ERROR:  column "name" does not exist
+LINE 1: SELECT id, name FROM analytics WHERE last_updated = 2018-08-...
+                   ^
+playstore=# SELECT id, app_name FROM analytics WHERE last_updated = 2018-08-01;
+ERROR:  operator does not exist: date = integer
+LINE 1: ...CT id, app_name FROM analytics WHERE last_updated = 2018-08-...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+playstore=# SELECT id, app_name FROM analytics WHERE last_updated = '2018-08-01';
+  id  |                                     app_name                                      
+------+-----------------------------------------------------------------------------------
+   10 | Clash Royale
+   11 | Candy Crush Saga
+   12 | UC Browser - Fast Download Private & Secure
+   74 | Score! Hero
+  101 | Tiny Flashlight + LED
+  102 | Crossy Road
+  103 | SimCity BuildIt
+  111 | FIFA Soccer
+  112 | Angry Birds 2
+  125 | Need for Speed™ No Limits
+  126 | YouCam Makeup - Magic Selfie Makeovers
+  152 | Fallout Shelter
+  159 | DU Recorder – Screen Recorder, Video Editor, Live
+  160 | Bike Race Free - Top Motorcycle Racing Games
+  161 | KakaoTalk: Free Calls & Text
+  162 | Dolphin Browser - Fast, Private & Adblock🐬
+  163 | Opera Browser: Fast and Secure
+  164 | MARVEL Contest of Champions
+  184 | Video Editor Music,Cut,No Crop
+  226 | Frozen Free Fall
+  260 | Chess Free
+  276 | ► MultiCraft ― Free Miner! 👍
+  277 | Vlogger Go Viral - Tuber Game
+  300 | Bad Piggies
+  301 | Skater Boy
+  356 | S Photo Editor - Collage Maker , Photo Collage
+  357 | Magisto Video Editor & Maker
+  358 | Itau bank
+  359 | DEER HUNTER 2018
+  360 | Mobizen Screen Recorder for SAMSUNG
+  362 | Bike Racing 3D
+  425 | Bomber Friends
+  426 | Lep’s World 3 🍀🍀🍀
+  431 | MakeupPlus - Your Own Virtual Makeup Artist
+  436 | Photo Collage Maker
+  465 | ivi - movies and TV shows in HD
+  466 | Calculator Plus Free
+  467 | Indeed Job Search
+  507 | MakeMyTrip-Flight Hotel Bus Cab IRCTC Rail Booking
+  569 | Waplog - Free Chat, Dating App, Meet Singles
+  570 | ESPN
+  580 | Galaxy Attack: Alien Shooter
+  620 | HD Camera Ultra
+  663 | Fire Emblem Heroes
+  664 | Daily Horoscope
+  682 | Equestria Girls
+  683 | Ingress
+  740 | Arrow.io
+  757 | Bike Mayhem Free
+  758 | GroupMe
+  759 | Samsung Max - Data Savings & Privacy Protection
+  760 | Wondershare PowerCam
+  805 | Psiphon Pro - The Internet Freedom VPN
+  806 | Tubi TV - Free Movies & TV
+  813 | foodpanda - Local Food Delivery
+  814 | Soul Knight
+  825 | OkCupid Dating
+  892 | Solitaire
+  893 | FrostWire: Torrent Downloader & Music Player
+  905 | Fox News – Breaking News, Live Video & News Alerts
+playstore=# SELECT COUNT(name) FROM analytics GROUP BY category;
+ERROR:  column "name" does not exist
+LINE 1: SELECT COUNT(name) FROM analytics GROUP BY category;
+                     ^
+playstore=# SELECT COUNT(app_name) FROM analytics GROUP BY category;
+ count 
+-------
+   191
+   342
+    46
+    52
+    59
+   313
+  1110
+   313
+   269
+   350
+   753
+   234
+    63
+   319
+    79
+    59
+   360
+   329
+   331
+   338
+   149
+   249
+    82
+   241
+   204
+   298
+   156
+   129
+    80
+   110
+  1789
+   165
+    75
+(33 rows)
+
+playstore=# SELECT COUNT(app_name) FROM analytics GROUP BY category HAVING category = “Family | 1972”;
+ERROR:  syntax error at or near "”"
+LINE 1: ...alytics GROUP BY category HAVING category = “Family | 1972”;
+                                                                     ^
+playstore=# SELECT MAX(reviews) FROM analytics WHERE rating >= 4.8;
+   max   
+---------
+ 4559407
+(1 row)
+
+playstore=# SELECT AVG(rating) FROM analytics GROUP BY category ORDER BY DESC;
+ERROR:  syntax error at or near "DESC"
+LINE 1: ... AVG(rating) FROM analytics GROUP BY category ORDER BY DESC;
+                                                                  ^
+playstore=# SELECT AVG(rating) FROM analytics GROUP BY category ORDER BY AVG(rating) DESC;
+        avg         
+--------------------
+  4.395238104320708
+   4.38903223006956
+  4.347540949211746
+ 4.3423728633061645
+    4.3283387457509
+  4.299999970656175
+  4.287167731498383
+  4.285714266251545
+ 4.2743944663902464
+  4.253648051376507
+  4.245669291244717
+   4.24399998664856
+  4.233333332576449
+  4.212173904543338
+  4.200000017881393
+  4.197368430463891
+  4.196116511489967
+ 4.1926829182520144
+ 4.1904873752761995
+ 4.1784615259904125
+  4.155660354866172
+  4.155172401461108
+  4.151234589241169
+  4.146835436549368
+  4.130131007281974
+   4.12617449632427
+  4.116666667004849
+   4.10179372753263
+  4.077076400237226
+  4.059748438919115
+  4.058196711735647
+  4.050627608678331
+  3.993684190825412
+(33 rows)
+
+playstore=# SELECT app_name, price, rating FROM analytics WHERE rating < 3;
+                        app_name                        | price  | rating 
+--------------------------------------------------------+--------+--------
+ The Wall Street Journal: Business & Market News        |      0 |    2.8
+ Vikings: an Archer’s Journey                           |      0 |    2.9
+ Shoot Em Down Free                                     |      0 |    2.4
+ NoBuffDating - Free Dating App                         |      0 |    2.7
+ Morse Code Reader                                      |      0 |    2.9
+ Surah Al-Waqiah                                        |      0 |    2.7
+ WPTV 5 West Palm Beach                                 |      0 |    2.5
+ Papyrus Ex                                             |      0 |    2.5
+ AE Jewels                                              |      0 |    2.8
+ Gas Prices (Germany only)                              |      0 |    2.9
+ CCP DZ : Fill out a check | Number in letters DZD      |      0 |    1.8
+ EZ File Manager(Root Explorer)                         |      0 |    2.8
+ Two Nights at jumpscare                                |      0 |    2.7
+ Job CV Maker & Portfolio Maker                         |      0 |    2.9
+ TV Guide BR Gold                                       |      0 |    2.5
+ 7 minute abs workout - Daily Ab Workout                |      0 |    2.7
+ Antenna Tool                                           |      0 |    2.7
+ Quiz CS:GO players                                     |      0 |    2.1
+ Grenade Practice for CS:GO                             |      0 |      2
+ Traps n’ Gemstones                                     |      0 |    2.9
+ Princess Adventures Puzzles                            |      0 |    2.9
+ Synology Drive                                         |      0 |    2.5
+ CABLE SIZE CALCULATOR BS 7671                          |      0 |    2.8
+ Public Service CU Mobile                               |      0 |    2.9
+ Black Theme Go Launcher EX                             |      0 |    2.7
+ Ae Allah na Dai (Rasa)                                 |      0 |    2.7
+ BJ-UFO                                                 |      0 |    2.5
+ foody Cyprus - online ordering                         |      0 |    2.8
+ CV Engineer - Free Resume Maker & CV Templates         |      0 |    1.7
+ EMT Review Plus                                        |      0 |    2.9
+ CY.SEND Online Top Up                                  |      0 |    2.8
+ Eshopcy.com.cy                                         |      0 |    2.9
+ Blood Pressure Companion                               |      0 |    2.8
+ DL Calculator                                          |      0 |    1.9
+ ADMIRALTY H-Note                                       |      0 |    1.9
+ cm, mm to inch, feet converter tool                    |      0 |    1.9
+ Arabic Chat - Chat                                     |      0 |    2.2
+ Baba Yaad Hai?(BK’s)                                   |      0 |    2.5
+ Soo Co-op Mobile Banking                               |      0 |    2.3
+ Free Live Talk-Video Call                              |      0 |    2.8
+ Car Crash III Beam DH Real Damage Simulator 2018       |      0 |    2.6
+ N Launcher: Nougat Theme                               |      0 |    2.5
+ Theme for Iphone X Plus                                |      0 |    2.9
+ Make a burger king                                     |      0 |    1.7
+ mobileRx Pharmacy                                      |      0 |    2.6
+ CG Creative Sets: 2D/3D Artist                         |      0 |    2.8
+ Officiel du SCRABBLE LAROUSSE                          |      0 |    2.8
+ Tap The Easter Egg!                                    |      0 |    2.2
+ AP Biology Study Guide + Quiz                          |      0 |    2.4
+ DW Spectrum™ IP VMS                                    |      0 |    2.7
+ The Florida Trail Guide                                |      0 |    2.4
+ AG Contacts, Premium edition                           |      0 |    2.6
+ AP Flashcards                                          |      0 |    2.6
+ FREE VIDEO CHAT - LIVE VIDEO AND TEXT CHAT             |      0 |    2.4
+ MelifeCam-M                                            |      0 |    2.9
+ Rock n Roll Music Quiz Game                            |      0 |    2.5
+ EML UPnP-AV Control Point                              |   0.99 |    2.8
+ FD VR Cardboard Featured 360 Videos                    |      0 |    2.7
+ BN Bank Mobilbank                                      |      0 |    2.4
+ bz Basel E-Paper                                       |      0 |    2.8
+playstore=# SELECT app_name, price, rating, MAX(price) FROM analytics WHERE rating < 3;
+ERROR:  column "analytics.app_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT app_name, price, rating, MAX(price) FROM analytics WH...
+               ^
+playstore=# SELECT category, COUNT(app_name) FROM analytics GROUP BY category;
+      category       | count 
+---------------------+-------
+ BOOKS_AND_REFERENCE |   191
+ COMMUNICATION       |   342
+ BEAUTY              |    46
+ EVENTS              |    52
+ PARENTING           |    59
+ PHOTOGRAPHY         |   313
+ GAME                |  1110
+ BUSINESS            |   313
+ SOCIAL              |   269
+ MEDICAL             |   350
+ TOOLS               |   753
+ TRAVEL_AND_LOCAL    |   234
+ ART_AND_DESIGN      |    63
+ LIFESTYLE           |   319
+ WEATHER             |    79
+ COMICS              |    59
+ PRODUCTIVITY        |   360
+ PERSONALIZATION     |   329
+ FINANCE             |   331
+ SPORTS              |   338
+ ENTERTAINMENT       |   149
+ NEWS_AND_MAGAZINES  |   249
+ HOUSE_AND_HOME      |    82
+ SHOPPING            |   241
+ DATING              |   204
+ HEALTH_AND_FITNESS  |   298
+ EDUCATION           |   156
+ MAPS_AND_NAVIGATION |   129
+ LIBRARIES_AND_DEMO  |    80
+ FOOD_AND_DRINK      |   110
+ FAMILY              |  1789
+ VIDEO_PLAYERS       |   165
+ AUTO_AND_VEHICLES   |    75
+(33 rows)
+
+playstore=# SELECT category, COUNT(*) FROM analytics GROUP BY category;
+      category       | count 
+---------------------+-------
+ BOOKS_AND_REFERENCE |   191
+ COMMUNICATION       |   342
+ BEAUTY              |    46
+ EVENTS              |    52
+ PARENTING           |    59
+ PHOTOGRAPHY         |   313
+ GAME                |  1110
+ BUSINESS            |   313
+ SOCIAL              |   269
+ MEDICAL             |   350
+ TOOLS               |   753
+ TRAVEL_AND_LOCAL    |   234
+ ART_AND_DESIGN      |    63
+ LIFESTYLE           |   319
+ WEATHER             |    79
+ COMICS              |    59
+ PRODUCTIVITY        |   360
+ PERSONALIZATION     |   329
+ FINANCE             |   331
+ SPORTS              |   338
+ ENTERTAINMENT       |   149
+ NEWS_AND_MAGAZINES  |   249
+ HOUSE_AND_HOME      |    82
+ SHOPPING            |   241
+ DATING              |   204
+ HEALTH_AND_FITNESS  |   298
+ EDUCATION           |   156
+ MAPS_AND_NAVIGATION |   129
+ LIBRARIES_AND_DEMO  |    80
+ FOOD_AND_DRINK      |   110
+ FAMILY              |  1789
+ VIDEO_PLAYERS       |   165
+ AUTO_AND_VEHICLES   |    75
+(33 rows)
+
+playstore=# SELECT * FROM analytics ORDER BY reviews DESC LIMIT 5;
+ id |                 app_name                 |   category    | rating | reviews  |        size        | min_installs | price | content_rating |     genres      | last_updated |  current_version   |  android_version   
+----+------------------------------------------+---------------+--------+----------+--------------------+--------------+-------+----------------+-----------------+--------------+--------------------+--------------------
+  1 | Facebook                                 | SOCIAL        |    4.1 | 78158306 | Varies with device |   1000000000 |     0 | Teen           | {Social}        | 2018-08-03   | Varies with device | Varies with device
+  2 | WhatsApp Messenger                       | SOCIAL        |    4.1 | 78128208 | Varies with device |   1000000000 |     0 | Teen           | {Social}        | 2018-08-03   | Varies with device | Varies with device
+  3 | Instagram                                | COMMUNICATION |    4.4 | 69119316 | Varies with device |   1000000000 |     0 | Everyone       | {Communication} | 2018-08-03   | Varies with device | Varies with device
+  4 | Messenger – Text and Video Chat for Free | COMMUNICATION |    4.4 | 69119316 | Varies with device |   1000000000 |     0 | Everyone       | {Communication} | 2018-08-03   | Varies with device | Varies with device
+  5 | Clash of Clans                           | COMMUNICATION |    4.4 | 69109672 | Varies with device |   1000000000 |     0 | Everyone       | {Communication} | 2018-08-03   | Varies with device | Varies with device
+(5 rows)
+
+playstore=# SELECT * FROM analytics WHERE rating >= 4.8;
+  id  |                                            app_name                                             |      category       | rating | reviews |        size        | min_installs | price | content_rating |            genres             | last_updated |      current_version       |  android_version   
+------+-------------------------------------------------------------------------------------------------+---------------------+--------+---------+--------------------+--------------+-------+----------------+-------------------------------+--------------+----------------------------+--------------------
+  260 | Chess Free                                                                                      | HEALTH_AND_FITNESS  |    4.8 | 4559407 | Varies with device |    100000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-08-01   | Varies with device         | Varies with device
+  392 | Basketball Stars                                                                                | VIDEO_PLAYERS       |    4.8 | 2588730 | 9.7M               |     50000000 |     0 | Everyone       | {"Video Players & Editors"}   | 2018-07-30   | 1.7.1.3                    | 5.0 and up
+  521 | Kill Shot Bravo: Sniper FPS                                                                     | FAMILY              |    4.8 | 1506783 | 89M                |     10000000 |     0 | Teen           | {"Role Playing"}              | 2018-07-18   | 1.2.115                    | 4.0 and up
+  526 | Mobile Security: Antivirus, Web Scan & App Lock                                                 | FAMILY              |    4.8 | 1499466 | 96M                |     10000000 |     0 | Teen           | {Casual}                      | 2018-07-24   | 1.25.0                     | 4.1 and up
+  583 | iFunny :)                                                                                       | FAMILY              |    4.8 | 1304467 | 68M                |     10000000 |     0 | Everyone       | {Strategy}                    | 2018-07-27   | 2.9                        | 4.1 and up
+  599 | T-Mobile                                                                                        | SOCIAL              |    4.8 | 1264084 | 62M                |     10000000 |     0 | Teen           | {Social}                      | 2018-08-07   | 1.8.19179                  | 4.0.3 and up
+  607 | Dr. Parking 4                                                                                   | SOCIAL              |    4.8 | 1259075 | 62M                |     10000000 |     0 | Teen           | {Social}                      | 2018-07-20   | 1.8.19179                  | 4.0.3 and up
+  735 | Text Me: Text Free, Call Free, Second Phone Number                                              | BOOKS_AND_REFERENCE |    4.9 |  922752 | Varies with device |     10000000 |     0 | Everyone       | {"Books & Reference"}         | 2018-06-15   | Varies with device         | Varies with device
+  948 | Phone Tracker : Family Locator                                                                  | HEALTH_AND_FITNESS  |    4.8 |  570242 | 20M                |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-08-02   | 5.0.2                      | 4.1 and up
+  969 | Camera360 Lite - Selfie Camera                                                                  | GAME                |    4.8 |  549720 | 85M                |     10000000 |     0 | Everyone       | {Simulation}                  | 2018-07-19   | 2.1.1.4.0                  | 4.4 and up
+  992 | Shopkick: Free Gift Cards, Shop Rewards & Deals                                                 | GAME                |    4.8 |  528550 | 73M                |     10000000 |     0 | Teen           | {Arcade}                      | 2018-07-26   | 1.2.6                      | 4.1 and up
+  995 | Love Nikki-Dress UP Queen                                                                       | GAME                |    4.8 |  526595 | 49M                |     10000000 |     0 | Everyone 10+   | {Arcade}                      | 2018-06-26   | 2.9                        | 4.0.3 and up
+ 1078 | The Coupons App                                                                                 | HEALTH_AND_FITNESS  |    4.8 |  471036 | Varies with device |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-08-03   | Varies with device         | 4.0 and up
+ 1105 | Screen Off and Lock                                                                             | BOOKS_AND_REFERENCE |    4.8 |  445756 | 16M                |     10000000 |     0 | Everyone       | {"Books & Reference"}         | 2018-05-15   | 2.6.22                     | 4.0 and up
+ 1115 | S.O.L : Stone of Life EX                                                                        | HEALTH_AND_FITNESS  |    4.8 |  432160 | 15M                |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-06-28   | Varies with device         | Varies with device
+ 1120 | Space Shooter : Galaxy Attack                                                                   | HEALTH_AND_FITNESS  |    4.8 |  428156 | 15M                |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-06-28   | Varies with device         | Varies with device
+ 1264 | osmino Wi-Fi: free WiFi                                                                         | TOOLS               |    4.8 |  337532 | 15M                |     10000000 |     0 | Everyone       | {Tools}                       | 2018-07-11   | V1-180703                  | 4.4 and up
+ 1271 | Learn Japanese, Korean, Chinese Offline & Free                                                  | VIDEO_PLAYERS       |    4.8 |  332623 | 4.6M               |     10000000 |     0 | Everyone       | {"Video Players & Editors"}   | 2018-07-27   | 1.1.58                     | 4.1 and up
+ 1410 | RetroSelfie - Selfie Editor                                                                     | HEALTH_AND_FITNESS  |    4.9 |  272337 | 13M                |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-06-21   | 1.0.2                      | 4.2 and up
+ 1412 | Tophatter - 90 Second Auctions                                                                  | HEALTH_AND_FITNESS  |    4.9 |  272172 | 13M                |     10000000 |     0 | Everyone       | {"Health & Fitness"}          | 2018-06-21   | 1.0.2                      | 4.2 and up
+ 1422 | Power Pop Bubbles                                                                               | FAMILY              |    4.8 |  269194 | 6.9M               |     10000000 |     0 | Everyone       | {Entertainment,"Brain Games"} | 2018-08-03   | Varies with device         | Varies with device
+ 1451 | MegaFon Dashboard                                                                               | VIDEO_PLAYERS       |    4.8 |  259003 | Varies with device |     10000000 |     0 | Everyone       | {"Video Players & Editors"}   | 2018-08-03   | Varies with device         | 4.3 and up
+ 1454 | YouCut - Video Editor & Video Maker, No Watermark                                               | VIDEO_PLAYERS       |    4.8 |  258277 | Varies with device |     10000000 |     0 | Everyone       | {"Video Players & Editors"}   | 2018-08-03   | Varies with device         | 4.3 and up
+ 1461 | Microsoft Remote Desktop                                                                        | EDUCATION           |    4.8 |  256079 | 7.6M               |      1000000 |     0 | Teen           | {Education}                   | 2018-07-12   | 2.2.4                      | 4.0.3 and up
+ 1519 | Ringtones & Wallpapers for Me                                                                   | COMMUNICATION       |    4.8 |  237468 | 8.8M               |      1000000 |     0 | Everyone       | {Communication}               | 2018-07-26   | 2018.1.715                 | 4.0 and up
+ 1537 | Remote Link (PC Remote)                                                                         | GAME                |    4.8 |  230849 | 87M                |     10000000 |     0 | Everyone       | {Word}                        | 2018-08-02   | 1.0.47                     | 4.1 and up
+ 1538 | PJ Masks: Moonlight Heroes                                                                      | GAME                |    4.8 |  230727 | 87M                |     10000000 |     0 | Everyone       | {Word}                        | 2018-08-02   | 1.0.47                     | 4.1 and up
+ 1539 | pixiv                                                                                           | GAME                |    4.8 |  230727 | 87M                |     10000000 |     0 | Everyone       | {Word}                        | 2018-08-02   | 1.0.47                     | 4.1 and up
+ 1540 | Retro Clock Widget                                                                              | GAME                |    4.8 |  230710 | 87M                |     10000000 |     0 | Everyone       | {Word}                        | 2018-08-02   | 1.0.47                     | 4.1 and up
+playstore=# SELECT * FROM analytics WHERE rating >= 4.8 ORDER BY reviews DESC LIMIT 1;
+ id  |  app_name  |      category      | rating | reviews |        size        | min_installs | price | content_rating |        genres        | last_updated |  current_version   |  android_version   
+-----+------------+--------------------+--------+---------+--------------------+--------------+-------+----------------+----------------------+--------------+--------------------+--------------------
+ 260 | Chess Free | HEALTH_AND_FITNESS |    4.8 | 4559407 | Varies with device |    100000000 |     0 | Everyone       | {"Health & Fitness"} | 2018-08-01   | Varies with device | Varies with device
+(1 row)
+
+playstore=# SELECT AVG(rating) FROM analytics GROUP BY category ORDER BY AVG(rating) DESC;
+        avg         
+--------------------
+  4.395238104320708
+   4.38903223006956
+  4.347540949211746
+ 4.3423728633061645
+    4.3283387457509
+  4.299999970656175
+  4.287167731498383
+  4.285714266251545
+ 4.2743944663902464
+  4.253648051376507
+  4.245669291244717
+   4.24399998664856
+  4.233333332576449
+  4.212173904543338
+  4.200000017881393
+  4.197368430463891
+  4.196116511489967
+ 4.1926829182520144
+ 4.1904873752761995
+ 4.1784615259904125
+  4.155660354866172
+  4.155172401461108
+  4.151234589241169
+  4.146835436549368
+  4.130131007281974
+   4.12617449632427
+  4.116666667004849
+   4.10179372753263
+  4.077076400237226
+  4.059748438919115
+  4.058196711735647
+  4.050627608678331
+  3.993684190825412
+(33 rows)
+
+playstore=# SELECT category, AVG(rating) FROM analytics GROUP BY category ORDER BY avg DESC;
+      category       |        avg         
+---------------------+--------------------
+ EVENTS              |  4.395238104320708
+ EDUCATION           |   4.38903223006956
+ ART_AND_DESIGN      |  4.347540949211746
+ BOOKS_AND_REFERENCE | 4.3423728633061645
+ PERSONALIZATION     |    4.3283387457509
+ BEAUTY              |  4.299999970656175
+ GAME                |  4.287167731498383
+ PARENTING           |  4.285714266251545
+ HEALTH_AND_FITNESS  | 4.2743944663902464
+ SHOPPING            |  4.253648051376507
+ SOCIAL              |  4.245669291244717
+ WEATHER             |   4.24399998664856
+ SPORTS              |  4.233333332576449
+ PRODUCTIVITY        |  4.212173904543338
+ AUTO_AND_VEHICLES   |  4.200000017881393
+ HOUSE_AND_HOME      |  4.197368430463891
+ PHOTOGRAPHY         |  4.196116511489967
+ MEDICAL             | 4.1926829182520144
+ FAMILY              | 4.1904873752761995
+ LIBRARIES_AND_DEMO  | 4.1784615259904125
+ FOOD_AND_DRINK      |  4.155660354866172
+ COMICS              |  4.155172401461108
+ COMMUNICATION       |  4.151234589241169
+ FINANCE             |  4.146835436549368
+ NEWS_AND_MAGAZINES  |  4.130131007281974
+ ENTERTAINMENT       |   4.12617449632427
+ BUSINESS            |  4.116666667004849
+ TRAVEL_AND_LOCAL    |   4.10179372753263
+ LIFESTYLE           |  4.077076400237226
+ VIDEO_PLAYERS       |  4.059748438919115
+ MAPS_AND_NAVIGATION |  4.058196711735647
+ TOOLS               |  4.050627608678331
+ DATING              |  3.993684190825412
+(33 rows)
+
+playstore=# SELECT MAX(price) FROM analytics WHERE rating < 3;
+  max   
+--------
+ 379.99
+(1 row)
+
+playstore=# SELECT *, MAX(price) FROM analytics WHERE rating < 3;
+ERROR:  column "analytics.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT *, MAX(price) FROM analytics WHERE rating < 3;
+               ^
+playstore=# SELECT app_name, price, rating FROM analytics WHERE rating < 3 ORDER BY price DESC LIMIT 1;
+      app_name      | price  | rating 
+--------------------+--------+--------
+ Naruto & Boruto FR | 379.99 |    2.9
+(1 row)
+
+playstore=# SELECT app_name FROM analytics WHERE min_installs < 50 AND rating NOT null ORDER BY rating DESC;
+ERROR:  syntax error at or near "NOT"
+LINE 1: ...FROM analytics WHERE min_installs < 50 AND rating NOT null O...
+                                                             ^
+playstore=# SELECT app_name FROM analytics WHERE min_installs <= 50 AND rating IS NOT null ORDER BY rating DESC;
+                    app_name                    
+------------------------------------------------
+ DT
+ DQ Akses
+ DM Adventure
+ db Meter - sound level meter with data logging
+ Otto DM
+ ElejaOnline DF
+ Labs on Demand
+ FK Events
+ My CW
+ Dr.Dice - Sic bo analyzer
+ BTK-FH Online Campus
+ EU Whoiswho
+ Wifi Mingle
+ Lord Fairfax EMS Council
+ E.U. Trademark Search Tool
+ Popsicle Launcher for Android P 9.0 launcher
+ Q Actions - Digital Assistant
+ Border Ag & Energy
+ AQ: First Contact
+ AQ wisdom +
+ AQ Dentals
+ British Columbia Transit Info
+ CI On The Go
+ Radio FG Paris Underground
+ BV Bombers
+ EC Designer 2.0
+ EP FCU
+ Pekalongan CJ
+ CQ SIGNAL PRO 5
+ HR Team CQ Region Ed Qld
+ iCluster - The DX-Cluster database
+ MY GULFPORT FL
+ Sensenuts eI
+ BW t&t
+ DT CLOTHINGS
+ Miller’s Bar B-Q
+ All-night drugstore CI & Price
+ CY Spray nozzle
+ DY Fitness
+ Custos F.O.
+ ER
+ BL File Explorer
+ Audiowalk EB
+ Ec Solutions Mobile
+ BT Satmeter
+ FQ - Football Quiz
+ Reksio cz. 1
+ CE Genius Nurses Edition
+ DF-View
+ ReDNAKET DB Normalization Tool
+ Ek IRA
+ EC-Contractors
+ Word Search Tab 1 FR
+ Cy’s Elma Pharmacy
+ F-1 watchface by Delta
+ Dr D K Olukoya
+ BibleRead En Cy Zh Yue
+(57 rows)
+
+playstore=# SELECT app_name FROM analytics WHERE rating < 3 AND reviews >= 10000;
+                    app_name                     
+-------------------------------------------------
+ The Wall Street Journal: Business & Market News
+ Vikings: an Archer’s Journey
+ Shoot Em Down Free
+(3 rows)
+
+playstore=# SELECT app_name WHERE price > 0.10 AND price > 1 ORDER BY review DESC LIMIT 10;
+ERROR:  column "app_name" does not exist
+LINE 1: SELECT app_name WHERE price > 0.10 AND price > 1 ORDER BY re...
+               ^
+playstore=# SELECT app_name FROM analytics WHERE rating < 3 AND reviews >= 10000;
+                    app_name                     
+-------------------------------------------------
+ The Wall Street Journal: Business & Market News
+ Vikings: an Archer’s Journey
+ Shoot Em Down Free
+(3 rows)
+
+playstore=# SELECT app_name FROM analytics WHERE price > 0.10 AND price > 1 ORDER BY review DESC LIMIT 10;
+ERROR:  column "review" does not exist
+LINE 1: ...alytics WHERE price > 0.10 AND price > 1 ORDER BY review DES...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "analytics.reviews".
+playstore=# SELECT app_name FROM analytics WHERE price > 0.10 AND price > 1 ORDER BY reviews DESC LIMIT 10;
+                 app_name                 
+------------------------------------------
+ Choices: Stories You Play
+ Crisis Action: 2018 NO.1 FPS
+ Evie Launcher
+ Fields of Battle
+ Google My Business
+ Black Survival
+ Battle Gems (AdventureQuest)
+ FANDOM for: GTA
+ Lose Belly Fat in 30 Days - Flat Stomach
+ Star Wars ™: DIRTY
+(10 rows)
+
+playstore=# SELECT * FROM analytics WHERE price BETWEEN 0.1 and 1 ORDER BY reviews DESC LIMIT 10;
+  id  |                  app_name                   |    category     | rating | reviews | size | min_installs | price | content_rating |            genres             | last_updated | current_version | android_version 
+------+---------------------------------------------+-----------------+--------+---------+------+--------------+-------+----------------+-------------------------------+--------------+-----------------+-----------------
+ 1144 | Free Slideshow Maker & Video Editor         | GAME            |    4.6 |  408292 | 29M  |     10000000 |  0.99 | Mature 17+     | {Action}                      | 2018-07-12   | 1.7.110758      | 4.1 and up
+ 2298 | Couple - Relationship App                   | GAME            |    4.3 |   85468 | 36M  |      1000000 |  0.99 | Everyone       | {Arcade}                      | 2018-06-08   | 2.4.1.485300    | 4.0.3 and up
+ 2315 | Anime X Wallpaper                           | FAMILY          |    4.6 |   84114 | 23M  |       500000 |  0.99 | Everyone 10+   | {Puzzle}                      | 2018-07-05   | 1.13.108869     | 2.3.3 and up
+ 2603 | Dance On Mobile                             | FAMILY          |    4.6 |   61264 | 43M  |      1000000 |  0.99 | Everyone       | {Puzzle}                      | 2018-06-19   | 3.7.0           | 4.1 and up
+ 2645 | Marvel Unlimited                            | PERSONALIZATION |    4.3 |   58617 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2646 | FastMeet: Chat, Dating, Love                | PERSONALIZATION |    4.3 |   58614 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2811 | IHG®: Hotel Deals & Rewards                 | FAMILY          |    4.5 |   48754 | 9.3M |       100000 |  0.99 | Everyone       | {Arcade,"Action & Adventure"} | 2014-10-07   | 1.5.2           | 2.3 and up
+ 3050 | Live Weather & Daily Local Weather Forecast | GAME            |    4.4 |   38419 | 100M |      1000000 |  0.99 | Everyone 10+   | {Action}                      | 2018-08-03   | 2.3.24          | 4.1 and up
+ 3214 | DreamMapper                                 | GAME            |    4.4 |   32496 | 99M  |      1000000 |  0.99 | Teen           | {Action}                      | 2018-07-03   | 5.3.3           | 2.3 and up
+ 3227 | Můj T-Mobile Business                       | GAME            |    4.5 |   32344 | 29M  |      1000000 |  0.99 | Everyone       | {Adventure}                   | 2016-10-21   | 1.3.12          | 3.0 and up
+(10 rows)
+
+...skipping...
+  id  |                  app_name                   |    category     | rating | reviews | size | min_installs | price | content_rating |            genres             | last_updated | current_version | android_version 
+------+---------------------------------------------+-----------------+--------+---------+------+--------------+-------+----------------+-------------------------------+--------------+-----------------+-----------------
+ 1144 | Free Slideshow Maker & Video Editor         | GAME            |    4.6 |  408292 | 29M  |     10000000 |  0.99 | Mature 17+     | {Action}                      | 2018-07-12   | 1.7.110758      | 4.1 and up
+ 2298 | Couple - Relationship App                   | GAME            |    4.3 |   85468 | 36M  |      1000000 |  0.99 | Everyone       | {Arcade}                      | 2018-06-08   | 2.4.1.485300    | 4.0.3 and up
+ 2315 | Anime X Wallpaper                           | FAMILY          |    4.6 |   84114 | 23M  |       500000 |  0.99 | Everyone 10+   | {Puzzle}                      | 2018-07-05   | 1.13.108869     | 2.3.3 and up
+ 2603 | Dance On Mobile                             | FAMILY          |    4.6 |   61264 | 43M  |      1000000 |  0.99 | Everyone       | {Puzzle}                      | 2018-06-19   | 3.7.0           | 4.1 and up
+ 2645 | Marvel Unlimited                            | PERSONALIZATION |    4.3 |   58617 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2646 | FastMeet: Chat, Dating, Love                | PERSONALIZATION |    4.3 |   58614 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2811 | IHG®: Hotel Deals & Rewards                 | FAMILY          |    4.5 |   48754 | 9.3M |       100000 |  0.99 | Everyone       | {Arcade,"Action & Adventure"} | 2014-10-07   | 1.5.2           | 2.3 and up
+ 3050 | Live Weather & Daily Local Weather Forecast | GAME            |    4.4 |   38419 | 100M |      1000000 |  0.99 | Everyone 10+   | {Action}                      | 2018-08-03   | 2.3.24          | 4.1 and up
+ 3214 | DreamMapper                                 | GAME            |    4.4 |   32496 | 99M  |      1000000 |  0.99 | Teen           | {Action}                      | 2018-07-03   | 5.3.3           | 2.3 and up
+ 3227 | Můj T-Mobile Business                       | GAME            |    4.5 |   32344 | 29M  |      1000000 |  0.99 | Everyone       | {Adventure}                   | 2016-10-21   | 1.3.12          | 3.0 and up
+(10 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+playstore=# SELECT * FROM analytics WHERE price > 0.10 AND price > 1 ORDER BY reviews DESC LIMIT 10;
+  id  |                 app_name                 |    category     | rating | reviews |        size        | min_installs | price | content_rating |            genres             | last_updated | current_version |  android_version   
+------+------------------------------------------+-----------------+--------+---------+--------------------+--------------+-------+----------------+-------------------------------+--------------+-----------------+--------------------
+  416 | Choices: Stories You Play                | FAMILY          |    4.5 | 2376564 | Varies with device |     10000000 |  6.99 | Everyone 10+   | {Arcade,"Action & Adventure"} | 2018-07-24   | 1.5.2.1         | Varies with device
+  417 | Crisis Action: 2018 NO.1 FPS             | FAMILY          |    4.5 | 2375336 | Varies with device |     10000000 |  6.99 | Everyone 10+   | {Arcade,"Action & Adventure"} | 2018-07-24   | 1.5.2.1         | Varies with device
+ 1236 | Evie Launcher                            | GAME            |    4.4 |  348962 | 26M                |      1000000 |  6.99 | Mature 17+     | {Action}                      | 2015-03-21   | 1.08            | 3.0 and up
+ 1675 | Fields of Battle                         | FAMILY          |    4.6 |  190086 | 94M                |      1000000 |  2.99 | Everyone       | {Strategy}                    | 2018-07-13   | 3.16            | 2.3.3 and up
+ 1681 | Google My Business                       | FAMILY          |    4.7 |  188740 | 69M                |      1000000 |  1.99 | Everyone       | {Puzzle,"Brain Games"}        | 2018-07-05   | 1.16.0          | 4.2 and up
+ 1973 | Black Survival                           | FAMILY          |    4.3 |  129603 | 23M                |      1000000 |  2.99 | Everyone 10+   | {Card,"Action & Adventure"}   | 2016-02-11   | 1.11.0          | 2.3.3 and up
+ 1975 | Battle Gems (AdventureQuest)             | SPORTS          |    4.4 |  129409 | 73M                |      1000000 |  1.99 | Everyone       | {Sports}                      | 2018-08-04   | 1.5.1           | 4.0.3 and up
+ 2163 | FANDOM for: GTA                          | GAME            |    4.6 |  100805 | 50M                |      1000000 |  2.99 | Teen           | {Action}                      | 2014-12-02   | 1.85            | 2.3 and up
+ 2185 | Lose Belly Fat in 30 Days - Flat Stomach | PERSONALIZATION |    4.2 |   97890 | 14M                |      1000000 |  2.49 | Everyone       | {Personalization}             | 2016-08-24   | 5.7.8           | 2.3 and up
+ 2184 | Star Wars ™: DIRTY                       | PERSONALIZATION |    4.2 |   97890 | 14M                |      1000000 |  2.49 | Everyone       | {Personalization}             | 2016-08-24   | 5.7.8           | 2.3 and up
+(10 rows)
+
+...skipping...
+  id  |                 app_name                 |    category     | rating | reviews |        size        | min_installs | price | content_rating |            genres             | last_updated | current_version |  android_version   
+------+------------------------------------------+-----------------+--------+---------+--------------------+--------------+-------+----------------+-------------------------------+--------------+-----------------+--------------------
+  416 | Choices: Stories You Play                | FAMILY          |    4.5 | 2376564 | Varies with device |     10000000 |  6.99 | Everyone 10+   | {Arcade,"Action & Adventure"} | 2018-07-24   | 1.5.2.1         | Varies with device
+  417 | Crisis Action: 2018 NO.1 FPS             | FAMILY          |    4.5 | 2375336 | Varies with device |     10000000 |  6.99 | Everyone 10+   | {Arcade,"Action & Adventure"} | 2018-07-24   | 1.5.2.1         | Varies with device
+ 1236 | Evie Launcher                            | GAME            |    4.4 |  348962 | 26M                |      1000000 |  6.99 | Mature 17+     | {Action}                      | 2015-03-21   | 1.08            | 3.0 and up
+ 1675 | Fields of Battle                         | FAMILY          |    4.6 |  190086 | 94M                |      1000000 |  2.99 | Everyone       | {Strategy}                    | 2018-07-13   | 3.16            | 2.3.3 and up
+ 1681 | Google My Business                       | FAMILY          |    4.7 |  188740 | 69M                |      1000000 |  1.99 | Everyone       | {Puzzle,"Brain Games"}        | 2018-07-05   | 1.16.0          | 4.2 and up
+ 1973 | Black Survival                           | FAMILY          |    4.3 |  129603 | 23M                |      1000000 |  2.99 | Everyone 10+   | {Card,"Action & Adventure"}   | 2016-02-11   | 1.11.0          | 2.3.3 and up
+ 1975 | Battle Gems (AdventureQuest)             | SPORTS          |    4.4 |  129409 | 73M                |      1000000 |  1.99 | Everyone       | {Sports}                      | 2018-08-04   | 1.5.1           | 4.0.3 and up
+ 2163 | FANDOM for: GTA                          | GAME            |    4.6 |  100805 | 50M                |      1000000 |  2.99 | Teen           | {Action}                      | 2014-12-02   | 1.85            | 2.3 and up
+ 2185 | Lose Belly Fat in 30 Days - Flat Stomach | PERSONALIZATION |    4.2 |   97890 | 14M                |      1000000 |  2.49 | Everyone       | {Personalization}             | 2016-08-24   | 5.7.8           | 2.3 and up
+ 2184 | Star Wars ™: DIRTY                       | PERSONALIZATION |    4.2 |   97890 | 14M                |      1000000 |  2.49 | Everyone       | {Personalization}             | 2016-08-24   | 5.7.8           | 2.3 and up
+(10 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+playstore=# SELECT * FROM analytics WHERE price > 0.10 AND price < 1 ORDER BY reviews DESC LIMIT 10;
+  id  |                  app_name                   |    category     | rating | reviews | size | min_installs | price | content_rating |            genres             | last_updated | current_version | android_version 
+------+---------------------------------------------+-----------------+--------+---------+------+--------------+-------+----------------+-------------------------------+--------------+-----------------+-----------------
+ 1144 | Free Slideshow Maker & Video Editor         | GAME            |    4.6 |  408292 | 29M  |     10000000 |  0.99 | Mature 17+     | {Action}                      | 2018-07-12   | 1.7.110758      | 4.1 and up
+ 2298 | Couple - Relationship App                   | GAME            |    4.3 |   85468 | 36M  |      1000000 |  0.99 | Everyone       | {Arcade}                      | 2018-06-08   | 2.4.1.485300    | 4.0.3 and up
+ 2315 | Anime X Wallpaper                           | FAMILY          |    4.6 |   84114 | 23M  |       500000 |  0.99 | Everyone 10+   | {Puzzle}                      | 2018-07-05   | 1.13.108869     | 2.3.3 and up
+ 2603 | Dance On Mobile                             | FAMILY          |    4.6 |   61264 | 43M  |      1000000 |  0.99 | Everyone       | {Puzzle}                      | 2018-06-19   | 3.7.0           | 4.1 and up
+ 2645 | Marvel Unlimited                            | PERSONALIZATION |    4.3 |   58617 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2646 | FastMeet: Chat, Dating, Love                | PERSONALIZATION |    4.3 |   58614 | 26M  |      1000000 |  0.99 | Everyone       | {Personalization}             | 2016-12-07   | 4.3.2           | 4.4 and up
+ 2811 | IHG®: Hotel Deals & Rewards                 | FAMILY          |    4.5 |   48754 | 9.3M |       100000 |  0.99 | Everyone       | {Arcade,"Action & Adventure"} | 2014-10-07   | 1.5.2           | 2.3 and up
+ 3050 | Live Weather & Daily Local Weather Forecast | GAME            |    4.4 |   38419 | 100M |      1000000 |  0.99 | Everyone 10+   | {Action}                      | 2018-08-03   | 2.3.24          | 4.1 and up
+ 3214 | DreamMapper                                 | GAME            |    4.4 |   32496 | 99M  |      1000000 |  0.99 | Teen           | {Action}                      | 2018-07-03   | 5.3.3           | 2.3 and up
+ 3227 | Můj T-Mobile Business                       | GAME            |    4.5 |   32344 | 29M  |      1000000 |  0.99 | Everyone       | {Adventure}                   | 2016-10-21   | 1.3.12          | 3.0 and up
+(10 rows)
+
+playstore=# SELECT MIN(last_updated) FROM analytics;
+    min     
+------------
+ 2010-05-21
+(1 row)
+
+playstore=# SELECT app_name FROM analytics ORDER BY last_updated;
+                                                                                              app_name                                                                                              
+                                                                                              app_name                                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ CP Clicker
+ Barcelona Live - Goal Score & News for Barca Fans
+ Encumbrance Certificate - (Obsolete)
+ Al Mayadeen
+ Virtual Mother Surgery Doctor : Emergency Hospital
+ BF Browser by Betfilter - Stop Gambling Today!
+ tournaments and more.aj.2
+ CG Patwari Exam
+ CS Customizer
+ K-@ Mail - Email App
+ Tiny Scanner Pro: PDF Doc Scan
+ Theme For Techno Camon CX
+ Comic Es - Shojo manga / love comics free of charge ♪ ♪
+ Dete.bg
+ Hafizi Quran 15 lines per page
+ CJ Poker Odds Calculator
+ Leo and Tig
+ Differential Dx
+ CF GeneE
+ Clumsy Santa ER Surgery
+ BW eServices
+ Cute Questions BF
+ Nasihat - Chalo ae Pyaara
+ Deck Simulator for CR
+ senior easy phone
+ Employ Florida Mobile
+ Scary Video Maker
+ CG - Calendars Add-On
+ Ham Radio Prefixes
+ SQLite DB Reader
+ Shortcuts for After Effects
+ TeamWard – live help for LoL
+ Calorie Counter & Diet Tracker
+ Rockmaraton Info
+ Alpha Bank CY
+ Make your Be Like Bill
+ Fifa World Cup 2018: Photo Frame Editor & DP Maker
+ EMI Calculator | FD Calculator | RD calculator
+ K.MOJI
+ NativeScript Developer Day EU
+ Blood Pressure(BP) Report Lite
+ A-Z Screen Recorder -
+ R. Physics Puzzle Game
+ dekoreko-dz
+ GolfNow: Tee Time Deals at Golf Courses, Golf GPS
+ Best DP and Status - All Type DP & Status
+ EC-HRV test
+ P-Home for KLWP
+ F
+ CG FM
+ Android P Wallpapers
+ Fr Ignacio Outreach
+ DM Storage (for twitter)
+ CA Speakers
+ Helper for CS:GO
+ CG Shikshak
+ Counter Terrorist Gun Strike CS: Special Forces
+ Chest CT Sectional Walker
+ Florida map
+ AZ PLAYER HD
+ My BF App
+ AO/OTA Fracture Classification
+playstore=# SELECT app_name FROM analytics ORDER BY last_updated LIMIT 1;
+  app_name  
+------------
+ CP Clicker
+(1 row)
+
+playstore=# SELECT app_name,last_updated FROM analytics ORDER BY last_updated LIMIT 1;
+  app_name  | last_updated 
+------------+--------------
+ CP Clicker | 2010-05-21
+(1 row)
+
+playstore=# SELECT app_name,price FROM analytics ORDER BY price DESC LIMIT 1;
+      app_name      | price 
+--------------------+-------
+ Cardi B Piano Game |   400
+(1 row)
+
+playstore=# SELECT SUM(reviews) FROM analytics;
+    sum     
+------------
+ 4814575866
+(1 row)
+
+playstore=# SELECT category FROM analytics GROUP BY category HAVING COUNT(*) > 300;
+    category     
+-----------------
+ COMMUNICATION
+ PHOTOGRAPHY
+ GAME
+ BUSINESS
+ MEDICAL
+ TOOLS
+ LIFESTYLE
+ PRODUCTIVITY
+ PERSONALIZATION
+ FINANCE
+ SPORTS
+ FAMILY
+(12 rows)
+
+playstore=# SELECT app_name, reviews, min_installs, min_installs/reviews as proportion FROM analytics WHERE min_installs >= 100000 ORDER BY proportion DESC LIMIT 1;
+     app_name     | reviews | min_installs | proportion 
+------------------+---------+--------------+------------
+ Kim Bu Youtuber? |      66 |     10000000 |     151515
+(1 row)
+
+playstore=# SELECT app_name, rating, category FROM analytics WHERE min_installs > 50000 GROUP BY category ORDER BY min_installs DESC LIMIT 1;
+ERROR:  column "analytics.app_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT app_name, rating, category FROM analytics WHERE min_i...
+               ^
+playstore=# SELECT app_name, rating, category FROM analytics WHERE min_installs > 50000 GROUP BY categplaystore=# SELECT app_name, rating, category FROM analytics WHERE min_installs > 50000 GROUP BY category ORDER BY category DESC LIMIT 1;
+ERROR:  column "analytics.app_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT app_name, rating, category FROM analytics WHERE min_i...
+               ^
+playstore=# SELECT app_name, rating, category FROM analytics WHERE (rating, category) in (SELECT MAX(rating), category FROM analytics WHERE  min_installs >= 50000 GROUP BY category ORDER BY category;
+playstore(# ;
+playstore(# q                                                                                         playstore(# ;
+playstore(# )
+playstore-# ;
+ERROR:  syntax error at or near ";"
+LINE 1: ...  min_installs >= 50000 GROUP BY category ORDER BY category;
+                                                                      ^
+playstore=# SELECT app_name, rating, category FROM analytics
+playstore-#   WHERE (rating, category) in (
+playstore(#     SELECT MAX(rating), category FROM analytics
+playstore(#       WHERE min_installs >= 50000
+playstore(#       GROUP BY category
+playstore(#     )
+playstore-#   ORDER BY category;
+                      app_name                      | rating |      category       
+----------------------------------------------------+--------+---------------------
+ EC Tax                                             |    4.8 | ART_AND_DESIGN
+ Sokoban Land DX                                    |    4.8 | ART_AND_DESIGN
+ How do I care about my child?                      |    4.8 | ART_AND_DESIGN
+ EY Staff ENTERTAINER                               |    4.8 | ART_AND_DESIGN
+ BP Journal - Blood Pressure Diary                  |    4.8 | ART_AND_DESIGN
+ AC Remote For LG                                   |    4.9 | AUTO_AND_VEHICLES
+ Train Sim Pro                                      |    4.9 | AUTO_AND_VEHICLES
+ Power BI Ultimate Orientation                      |    4.9 | AUTO_AND_VEHICLES
+ BURGER KING® Puerto Rico                           |    4.9 | AUTO_AND_VEHICLES
+ DU Flashlight - Brightest LED & Flashlight Free    |    4.9 | AUTO_AND_VEHICLES
+ NOOK App for NOOK Devices                          |    4.9 | BEAUTY
+ Chakra Cleansing                                   |    4.9 | BOOKS_AND_REFERENCE
+ Guide for DB Xenoverse 2                           |    4.9 | BOOKS_AND_REFERENCE
+ Text Me: Text Free, Call Free, Second Phone Number |    4.9 | BOOKS_AND_REFERENCE
+ Putzmeister Experts                                |    4.9 | BOOKS_AND_REFERENCE
+ CE-STRONG                                          |    4.8 | BUSINESS
+ Axe Spinner                                        |    4.8 | BUSINESS
+ FD VR Player - for Youtube 3D                      |    4.8 | BUSINESS
+ RT News (Russia Today)                             |    4.8 | BUSINESS
+ Magical Insta DP                                   |    4.8 | BUSINESS
+ Ludo - Don’t get angry                             |    4.8 | BUSINESS
+ CB NFC Pendant                                     |    4.8 | BUSINESS
+ HHS                                                |    4.8 | BUSINESS
+ Savory - Deals,Freebies,Sales                      |    4.8 | BUSINESS
+ DP Photo Editor                                    |    4.8 | BUSINESS
+ Pacific Navy Fighter C.E. (AS)                     |    4.8 | COMICS
+ I am Rich!                                         |    4.8 | COMICS
+ Miller’s Bar B-Q                                   |    4.8 | COMMUNICATION
+ BW-GnuGo                                           |    4.8 | COMMUNICATION
+ Ringtones & Wallpapers for Me                      |    4.8 | COMMUNICATION
+ EG Player                                          |    4.8 | COMMUNICATION
+ PIO bv Transport App                               |    4.8 | COMMUNICATION
+ Jobs in Alabama - Jobs in Alba                     |    4.8 | COMMUNICATION
+ BS Meter (Ad Supported)                            |    4.8 | DATING
+ Healthy Recipes Free                               |    4.8 | DATING
+ E.F.JUVENTUD MADRID                                |    4.8 | DATING
+ CV Builder for Smart Resumes                       |    4.8 | DATING
+ DC N COMPANY ENTERTAINMENT RADIO!                  |    4.8 | DATING
+ CI Screwed - Icon Pack                             |    4.8 | DATING
+ CL-Phlebotomist                                    |    4.8 | DATING
+ TI-84 CE Graphing Calculator Manual TI 84          |    4.9 | EDUCATION
+ Facetune - For Free                                |    4.9 | EDUCATION
+ Skylink Live TV CZ                                 |    4.7 | ENTERTAINMENT
+ Neuvaines et prières au Coeur Sacré de Jésus       |    4.6 | EVENTS
+ converter video to mp3                             |    4.6 | EVENTS
+ Downers Grove AH                                   |    4.6 | EVENTS
+ Simple EV Calc                                     |    4.6 | EVENTS
+ DP & Status                                        |    4.6 | EVENTS
+ Trimble DL                                         |    4.6 | EVENTS
+ Jax Sheriff (FL)                                   |    4.9 | FAMILY
+ Sudy – Meet Elite & Rich Single                    |    4.9 | FAMILY
+ SUBWAY®                                            |    4.9 | FAMILY
+ FK Sarajevo                                        |    4.9 | FAMILY
+playstore=# SELECT app_name FROM analytics WHERE app_name LIKE 'facebook';
+ app_name 
+----------
+(0 rows)
+
+playstore=# SELECT app_name FROM analytics WHERE app_name ILIKE '%facebook%';
+                      app_name                      
+----------------------------------------------------
+ Facebook
+ Facebook Lite
+ Facebook Pages Manager
+ Video Downloader for Facebook
+ Who Viewed My Facebook Profile - Stalkers Visitors
+ Lite for Facebook Messenger
+ Friendly for Facebook
+ Profile Tracker - Who Viewed My Facebook Profile
+ EZ Video Download for Facebook
+ Faster for Facebook Lite
+ HD Video Download for Facebook
+ Facebook Ads Manager
+ HTC Social Plugin - Facebook
+ Stickers for Facebook
+ Puffin for Facebook
+ Phoenix - Facebook & Messenger
+ Swift for Facebook Lite
+ Pink Color for Facebook
+ Facebook Local
+ Facebook Face to Face Events
+ Facebook Creator
+ Download Facebook Photo Albums
+ IDM for Facebook ★ Downloader
+ Faster Social for Facebook
+ Mini for Facebook lite
+ Lite Messenger for Facebook Lite
+ Dp for Facebook
+ Videos downloader for Facebook:fast fb video saver
+(28 rows)
+
+playstore=# SELECT app_name, COUNT(*) FROM analytics GROUP BY genres COUNT(*) > 1;
+ERROR:  syntax error at or near "COUNT"
+LINE 1: ...app_name, COUNT(*) FROM analytics GROUP BY genres COUNT(*) >...
+                                                             ^
+playstore=# SELECT app_name, COUNT(*) FROM analytics GROUP BY genres HAVING COUNT(*) > 1;
+ERROR:  column "analytics.app_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT app_name, COUNT(*) FROM analytics GROUP BY genres HAV...
+               ^
+playstore=# SELECT app_name, COUNT(genres) FROM analytics GROUP BY genres HAVING COUNT(genres) > 1;
+ERROR:  column "analytics.app_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT app_name, COUNT(genres) FROM analytics GROUP BY genre...
+               ^
+playstore=# SELECT app_name FROM analytics WHERE array_length(genres, 1) = 2;
+                             app_name                              
+-------------------------------------------------------------------
+ Hotstar
+ Camera360: Selfie Photo Editor with Funny Sticker
+ Google+
+ Gangstar Vegas - mafia game
+ GO Keyboard - Emoticon keyboard, Free Theme, GIF
+ DU Recorder – Screen Recorder, Video Editor, Live
+ Bike Race Free - Top Motorcycle Racing Games
+ KakaoTalk: Free Calls & Text
+ Dolphin Browser - Fast, Private & Adblock🐬
+ Opera Browser: Fast and Secure
+ MARVEL Contest of Champions
+ Groupon - Shop Deals, Discounts & Coupons
+ FRONTLINE COMMANDO
+ Toon Blast
+ RULES OF SURVIVAL
+ Bank of Brazil
+ Brightest Flashlight Free ®
+ My Horse
+ Turbo FAST
+ Earn to Die 2
+ Choices: Stories You Play
+ Crisis Action: 2018 NO.1 FPS
+ PlayStation App
+ Tastely
+ Shopee: No.1 Belanja Online
+ Polaris Office - Word, Docs, Sheets, Slide, PDF
+ COOKING MAMA Let’s Cook!
+ Alto’s Adventure
+ Disney Crossy Road
+ AfreecaTV
+ MyASUS - Service Center
+ Mirror Photo:Editor Collage (HD)
+ Word Search
+ CM Security Lite - Antivirus
+ Rush
+ iGun Pro -The Original Gun App
+ Elevate - Brain Training Games
+ EyeEm - Camera & Photo Filter
+ Lumosity: #1 Brain Games & Cognitive Training App
+ I Know Stuff
+ 1LINE – One Line with One Touch
+ Merge Dragons!
+ Tuner - gStrings Free
+ Bike Rivals
+ Quizlet: Learn Languages & Vocab with Flashcards
+ My Photo Keyboard
+ CONTRACT KILLER: ZOMBIES (NR)
+ Learn English Vocabulary - 6,000 Words
+ Easy Voice Recorder
+ Airplane Pilot Car Transporter
+ PlayKids - Educational cartoons and games for kids
+ TED
+ ASOS
+playstore=# SELECT app_name FROM analytics WHERE genres = 'education';
+ERROR:  malformed array literal: "education"
+LINE 1: SELECT app_name FROM analytics WHERE genres = 'education';
+                                                      ^
+DETAIL:  Array value must start with "{" or dimension information.
+playstore=# SELECT * FROM analytics 
+playstore-#   WHERE genres @> '{"Education"}';
+  id  |                                   app_name                                    | category  | rating | reviews |        size        | min_installs | price | content_rating |              genres              | last_updated |          current_version          |  android_version   
+------+-------------------------------------------------------------------------------+-----------+--------+---------+--------------------+--------------+-------+----------------+----------------------------------+--------------+-----------------------------------+--------------------
+  158 | GO Keyboard - Emoticon keyboard, Free Theme, GIF                              | FAMILY    |    4.7 | 6297590 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-06   | Varies with device                | Varies with device
+  159 | DU Recorder – Screen Recorder, Video Editor, Live                             | FAMILY    |    4.7 | 6294400 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  160 | Bike Race Free - Top Motorcycle Racing Games                                  | FAMILY    |    4.7 | 6294397 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  161 | KakaoTalk: Free Calls & Text                                                  | EDUCATION |    4.7 | 6290507 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  162 | Dolphin Browser - Fast, Private & Adblock🐬                                    | EDUCATION |    4.7 | 6290507 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  163 | Opera Browser: Fast and Secure                                                | EDUCATION |    4.7 | 6290507 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  164 | MARVEL Contest of Champions                                                   | EDUCATION |    4.7 | 6289924 | Varies with device |    100000000 |     0 | Everyone       | {Education,Education}            | 2018-08-01   | Varies with device                | Varies with device
+  658 | FotMob - Live Soccer Scores                                                   | EDUCATION |    4.7 | 1107948 | Varies with device |     10000000 |     0 | Everyone       | {Education}                      | 2018-08-02   | Varies with device                | Varies with device
+  659 | Internet Speed Meter Lite                                                     | EDUCATION |    4.7 | 1107903 | Varies with device |     10000000 |     0 | Everyone       | {Education}                      | 2018-08-02   | Varies with device                | Varies with device
+  660 | Hitman Sniper                                                                 | EDUCATION |    4.7 | 1107903 | Varies with device |     10000000 |     0 | Everyone       | {Education}                      | 2018-08-02   | Varies with device                | Varies with device
+  661 | SAMURAI vs ZOMBIES DEFENSE                                                    | EDUCATION |    4.7 | 1107884 | Varies with device |     10000000 |     0 | Everyone       | {Education}                      | 2018-08-02   | Varies with device                | Varies with device
+  829 | Grindr - Gay chat                                                             | FAMILY    |    4.6 |  750321 | Varies with device |     10000000 |     0 | Everyone       | {Education}                      | 2018-08-07   | Varies with device                | Varies with device
+ 1252 | ZenUI Help                                                                    | EDUCATION |    4.5 |  342918 | 8.1M               |     10000000 |     0 | Everyone       | {Education}                      | 2018-07-29   | 2.24                              | 4.0 and up
+ 1255 | Yahoo Finance                                                                 | TOOLS     |    4.5 |  342336 | Varies with device |     10000000 |     0 | Everyone       | {Tools,Education}                | 2015-08-10   | Varies with device                | Varies with device
+ 1302 | Carousell: Snap-Sell, Chat-Buy                                                | EDUCATION |    4.7 |  314300 | 3.3M               |     10000000 |     0 | Everyone       | {Education}                      | 2018-05-02   | 1.94.9                            | 4.0 and up
+ 1303 | Sonic the Hedgehog™ Classic                                                   | EDUCATION |    4.7 |  314299 | 3.3M               |     10000000 |     0 | Everyone       | {Education}                      | 2018-05-02   | 1.94.9                            | 4.0 and up
+ 1365 | Terminal Emulator for Android                                                 | FAMILY    |   playstore=# quit;
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+fatal: not a git repository (or any of the parent directories): .git
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /Users/hannahsylee/Desktop/Springboard Software Engineering Course/22_SQL/sql-querying/.git/
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	queries_playstore.sql
+	queries_products.sql
+	seed_playstore.sql
+	seed_products.sql
+
+nothing added to commit but untracked files present (use "git add" to track)
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+	queries_playstore.sql
+	queries_products.sql
+	seed_playstore.sql
+	seed_products.sql
+
+nothing added to commit but untracked files present (use "git add" to track)
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git add .gitignore queries_playstore.sql queries_products.sql seed_playstore.sql seed_products.sql 
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   .gitignore
+	new file:   queries_playstore.sql
+	new file:   queries_products.sql
+	new file:   seed_playstore.sql
+	new file:   seed_products.sql
+
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git commit -m 'Add files for SQL Querying assignment'
+[master (root-commit) 3f2b082] Add files for SQL Querying assignment
+ 5 files changed, 9768 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 queries_playstore.sql
+ create mode 100644 queries_products.sql
+ create mode 100644 seed_playstore.sql
+ create mode 100644 seed_products.sql
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+On branch master
+nothing to commit, working tree clean
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git remote add origin git@github.com:hannahsylee/SQL_Querying.git
+git branch -M main
+git push -u origin main
+Enter passphrase for key '/Users/hannahsylee/.ssh/id_rsa': 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 306.90 KiB | 5.20 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:hannahsylee/SQL_Querying.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+hannahsylee@Hannahs-MacBook-Pro sql-querying % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+hannahsylee@Hannahs-MacBook-Pro sql-querying % cd ..
+hannahsylee@Hannahs-MacBook-Pro 22_SQL % ls
+sql-joins	sql-joins-demo	sql-query-demo	sql-querying
+hannahsylee@Hannahs-MacBook-Pro 22_SQL % cd sql-querying 
+hannahsylee@Hannahs-MacBook-Pro sql-querying % ls
+Part 3. Products Querying		queries_products.sql
+Part 4. Google Play Store Querying	seed_playstore.sql
+queries_playstore.sql			seed_products.sql
+hannahsylee@Hannahs-MacBook-Pro sql-querying % cd ..
+hannahsylee@Hannahs-MacBook-Pro 22_SQL % cd sql-joins 
+hannahsylee@Hannahs-MacBook-Pro sql-joins % ls
+data.sql	queries.sql
+hannahsylee@Hannahs-MacBook-Pro sql-joins % psql < data.sql
+NOTICE:  database "joins_exercise" does not exist, skipping
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "joins_exercise" as user "hannahsylee".
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+hannahsylee@Hannahs-MacBook-Pro sql-joins % psql joins_exercise
+psql (14.0)
+Type "help" for help.
+
+joins_exercise=# \d
+                 List of relations
+ Schema |      Name       |   Type   |    Owner    
+--------+-----------------+----------+-------------
+ public | owners          | table    | hannahsylee
+ public | owners_id_seq   | sequence | hannahsylee
+ public | vehicles        | table    | hannahsylee
+ public | vehicles_id_seq | sequence | hannahsylee
+(4 rows)
+
+joins_exercise=# SELECT * FROM owners;
+ id | first_name | last_name 
+----+------------+-----------
+  1 | Bob        | Hope
+  2 | Jane       | Smith
+  3 | Melody     | Jones
+  4 | Sarah      | Palmer
+  5 | Alex       | Miller
+  6 | Shana      | Smith
+  7 | Maya       | Malarkin
+(7 rows)
+
+joins_exercise=# SELECT * FROM vehicles;
+ id |  make  |  model  | year |  price   | owner_id 
+----+--------+---------+------+----------+----------
+  1 | Toyota | Corolla | 2002 |  2999.99 |        1
+  2 | Honda  | Civic   | 2012 | 12999.99 |        1
+  3 | Nissan | Altima  | 2016 | 23999.99 |        2
+  4 | Subaru | Legacy  | 2006 |  5999.99 |        2
+  5 | Ford   | F150    | 2012 |  2599.99 |        3
+  6 | GMC    | Yukon   | 2016 | 12999.99 |        3
+  7 | GMC    | Yukon   | 2014 | 22999.99 |        4
+  8 | Toyota | Avalon  | 2009 | 12999.99 |        4
+  9 | Toyota | Camry   | 2013 | 12999.99 |        4
+ 10 | Honda  | Civic   | 2001 |  7999.99 |        5
+ 11 | Nissan | Altima  | 1999 |  1899.99 |        6
+ 12 | Lexus  | ES350   | 1998 |  1599.99 |        6
+ 13 | BMW    | 300     | 2012 | 22999.99 |        6
+ 14 | BMW    | 700     | 2015 | 52999.99 |        6
+(14 rows)
+
+joins_exercise=# SELECT * FROM owners JOIN vehicles ON owners.id = vehicles.owner_id;
+ id | first_name | last_name | id |  make  |  model  | year |  price   | owner_id 
+----+------------+-----------+----+--------+---------+------+----------+----------
+  1 | Bob        | Hope      |  1 | Toyota | Corolla | 2002 |  2999.99 |        1
+  1 | Bob        | Hope      |  2 | Honda  | Civic   | 2012 | 12999.99 |        1
+  2 | Jane       | Smith     |  3 | Nissan | Altima  | 2016 | 23999.99 |        2
+  2 | Jane       | Smith     |  4 | Subaru | Legacy  | 2006 |  5999.99 |        2
+  3 | Melody     | Jones     |  5 | Ford   | F150    | 2012 |  2599.99 |        3
+  3 | Melody     | Jones     |  6 | GMC    | Yukon   | 2016 | 12999.99 |        3
+  4 | Sarah      | Palmer    |  7 | GMC    | Yukon   | 2014 | 22999.99 |        4
+  4 | Sarah      | Palmer    |  8 | Toyota | Avalon  | 2009 | 12999.99 |        4
+  4 | Sarah      | Palmer    |  9 | Toyota | Camry   | 2013 | 12999.99 |        4
+  5 | Alex       | Miller    | 10 | Honda  | Civic   | 2001 |  7999.99 |        5
+  6 | Shana      | Smith     | 11 | Nissan | Altima  | 1999 |  1899.99 |        6
+  6 | Shana      | Smith     | 12 | Lexus  | ES350   | 1998 |  1599.99 |        6
+  6 | Shana      | Smith     | 13 | BMW    | 300     | 2012 | 22999.99 |        6
+  6 | Shana      | Smith     | 14 | BMW    | 700     | 2015 | 52999.99 |        6
+(14 rows)
+
+joins_exercise=# SELECT first_name, last_name, COUNT(*) FROM owners JOIN vehicles ON owners.id = vehicles.owner_id;
+ERROR:  column "owners.first_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT first_name, last_name, COUNT(*) FROM owners JOIN vehi...
+               ^
+joins_exercise=# SELECT first_name, last_name, COUNT(id) FROM owners JOIN vehicles ON owners.id = vehicles.owner_id;
+ERROR:  column reference "id" is ambiguous
+LINE 1: SELECT first_name, last_name, COUNT(id) FROM owners JOIN veh...
+                                            ^
+joins_exercise=# SELECT first_name, last_name, COUNT(*) FROM owners JOIN vehicles ON owners.id = vehicles.owner_id;
+ERROR:  column "owners.first_name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT first_name, last_name, COUNT(*) FROM owners JOIN vehi...
+               ^
+joins_exercise=# SELECT first_name, last_name, COUNT(*) FROM owners JOIN vehicles ON owners.id = vehicles.owner_id GROUP BY (first_name, last_name) ORDER BY first_name;
+ first_name | last_name | count 
+------------+-----------+-------
+ Alex       | Miller    |     1
+ Bob        | Hope      |     2
+ Jane       | Smith     |     2
+ Melody     | Jones     |     2
+ Sarah      | Palmer    |     3
+ Shana      | Smith     |     4
+(6 rows)
+
+joins_exercise=# SELECT first_name, last_name, ROUND(AVG(price)) as average_prices, COUNT(*) FROM owners JOIN vehicles ON owners.id = vehicles.owner_id GROUP BY (first_name, last_name) HAVING COUNT(*) > 1 AND ROUND(AVG(price)) > 10000 ORDER BY first_name DESC;
+ first_name | last_name | average_prices | count 
+------------+-----------+----------------+-------
+ Shana      | Smith     |          19875 |     4
+ Sarah      | Palmer    |          16333 |     3
+ Jane       | Smith     |          15000 |     2
+(3 rows)
+
+joins_exercise=# 
